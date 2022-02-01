@@ -1,0 +1,4 @@
+.vscode
+/build
+components/rust-*/target
+components/rust-*/.embuild/dist

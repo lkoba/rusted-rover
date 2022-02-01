@@ -1,0 +1,36 @@
+[package]
+name = "rust-rusted-rover"
+version = "0.1.0"
+authors = ["root"]
+edition = "2018"
+resolver = "2"
+
+[lib]
+crate-type = ["staticlib"]
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true    # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[dependencies]
+anyhow = "1.0.51"
+log = "0.4"
+prost = "0.9"
+prost-types = "0.9"
+esp-idf-sys = { version = "0.30.4", features = ["native"] }
+esp-idf-hal = "0.32.5"
+esp-idf-svc = "0.36.7"
+my-esp-idf = { git = "https://github.com/lkoba/my-esp-idf" }
+my-rover-lib = { git = "https://github.com/lkoba/my-rover-lib" }
+
+[patch.crates-io]
+esp-idf-sys = { git = "https://github.com/lkoba/esp-idf-sys" }
+esp-idf-hal = { git = "https://github.com/lkoba/esp-idf-hal" }
+esp-idf-svc = { git = "https://github.com/lkoba/esp-idf-svc" }
+
+[build-dependencies]
+embuild = "0.28"
+anyhow = "1"

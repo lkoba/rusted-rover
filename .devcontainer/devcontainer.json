@@ -1,0 +1,59 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.209.5/containers/rust
+{
+    "name": "Rust",
+    "image": "lkoba/idf",
+    "runArgs": [
+        "--cap-add=SYS_PTRACE",
+        "--security-opt",
+        "seccomp=unconfined"
+    ],
+
+    "containerEnv": {
+        "RUST_ESP32_WIFI_SSID": "",
+        "RUST_ESP32_WIFI_PASS": "",
+        "RUST_ESP32_OTA_SERVER_URL": "",
+        "RUST_ESP32_OTA_SERVER_CERT": "",
+    },
+
+    // Set *default* container specific settings.json values on container create.
+    "settings": {
+        "lldb.executable": "/usr/bin/lldb",
+        // VS Code don't watch files under ./target
+        "files.watcherExclude": {
+            "**/target/**": true,
+        },
+        "search.exclude": {
+            "**/node_modules": true,
+            "**/bower_components": true,
+            "**/*.code-search": true,
+            "**/.embuild/**": true,
+            "**/target/**": true,
+        },
+        "editor.formatOnSave": true,
+        "rust-analyzer.checkOnSave.command": "clippy",
+        // ATENCION SI NO ANDA BIEN RUST-ANALYZER
+        // Hay que copiar el .cargo/config.toml de un proyecto que funcione
+        // porque hay que definir ahi el target para que rust-analyzer detecte
+        // el proyecto y funcione y correctamente.
+    },
+
+    // Add the IDs of extensions you want installed when the container is created.
+    "extensions": [
+        "vadimcn.vscode-lldb",
+        "matklad.rust-analyzer",
+        "serayuzgur.crates"
+    ],
+
+    "workspaceMount": "source=/home/koba/git/esp,target=/workdir,type=bind,consistency=cached",
+    "workspaceFolder": "/workdir/rusted-rover/components/rust-rusted-rover",
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // Use 'postCreateCommand' to run commands after the container is created.
+    // "postCreateCommand": "rustc --version",
+
+    // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+    // "remoteUser": "vscode"
+}
