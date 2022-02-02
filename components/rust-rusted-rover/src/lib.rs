@@ -28,7 +28,7 @@ pub fn main() -> Result<()> {
         output_pin!(peripherals.pins.gpio19),
         mcpwm_pin!(peripherals.pins.gpio0, peripherals.pins.mcpwm_unit_0_gen_b),
         mcpwm_pin!(peripherals.pins.gpio2, peripherals.pins.mcpwm_unit_0_gen_a),
-    );
+    )?;
 
     let gamepad_rx = connect_steam_controller()?;
 

@@ -718,7 +718,7 @@ dependencies = [
 [[package]]
 name = "my-esp-idf"
 version = "0.1.0"
-source = "git+https://github.com/lkoba/my-esp-idf#4918f2b61cfae3a9805958c7b64d978070ad2cd9"
+source = "git+https://github.com/lkoba/my-esp-idf#8e035f84e9100e4e159d0ec764ad3b6d4306250e"
 dependencies = [
  "anyhow",
  "embedded-hal 0.2.6",
